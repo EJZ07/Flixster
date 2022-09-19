@@ -1,6 +1,10 @@
 package com.example.flixster
 
+import android.app.Activity
 import android.content.Context
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +20,7 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
 
 
     //Expensive Operation
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         Log.i(TAG, "onCreateViewHolder")
@@ -34,13 +39,34 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ivPoster = itemView.findViewById<ImageView>(R.id.ivPoster)
+//        private val ivBackdrop = itemView.findViewById<ImageView>(R.id.ivBackdrop)
         private val tvTitle = itemView.findViewById<TextView>(R.id.tvtitle)
         private val tvOverview = itemView.findViewById<TextView>(R.id.tvOverview)
 
         fun bind(movie: Movie) {
             tvTitle.text = movie.title
             tvOverview.text = movie.overview
-            Glide.with(context).load(movie.posterImageUrl).into(ivPoster)
+            Glide.with(context)
+                .load(movie.posterImageUrl)
+                .placeholder(R.drawable.disk)
+                .into(ivPoster)
+//            val image: String
+//            val orientation = ActivityInfo.SCREEN_ORIENTATION_USER//resources.configuration.orientation
+//            if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+//                Glide.with(context)
+//                    .load(movie.posterImageUrl)
+//                    .placeholder(R.drawable.disk)
+//                    .error(R.drawable.none)
+//                    .into(ivPoster)
+//            } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//                Glide.with(context)
+//                    .load(movie.backDropImageUrl)
+//                    .placeholder(R.drawable.disk)
+//                    .error(R.drawable.none)
+//                    .into(ivBackdrop)
+//            }
+
+
         }
     }
 
