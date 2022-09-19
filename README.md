@@ -15,8 +15,8 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 
 #### BONUS
 - [X] (2pts) Views should be responsive for both landscape/portrait mode.
-   - [ ] (1pt) In portrait mode, the poster image, title, and movie overview is shown.
-   - [ ] (1pt) In landscape mode, the rotated alternate layout should use the backdrop image instead and show the title and movie overview to the right of it.
+   - [X] (1pt) In portrait mode, the poster image, title, and movie overview is shown.
+   - [X] (1pt) In landscape mode, the rotated alternate layout should use the backdrop image instead and show the title and movie overview to the right of it.
 
 - [X] (2pts) Display a nice default [placeholder graphic](https://guides.codepath.org/android/Displaying-Images-with-the-Glide-Library#advanced-usage) for each image during loading
 - [X] (2pts) Improved the user interface by experimenting with styling and coloring.
@@ -25,10 +25,10 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 ### App Walkthough GIF
 `TODO://` Add the URL to your animated app walkthough `gif` in the image tag below, `YOUR_GIF_URL_HERE`. Make sure the gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after after adding gif)
 
-<img src="https://github.com/EJZ07/Prework/blob/main/Flixster_1.gif" width=250><br>
+<img src="https://github.com/EJZ07/Flixster/blob/main/Flixster_1_1.gif" width=250><br>
 
 ### Notes
-The placerholder is added when an image doesnt load. Its a bit unapparant in the video
+The Code takes a while for it to reach the API. The placerholder is added when an image doesnt load. Its a bit unapparant in the video
 
 ### Open-source libraries used
 
