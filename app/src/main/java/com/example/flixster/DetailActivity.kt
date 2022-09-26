@@ -76,7 +76,7 @@ class DetailActivity : YouTubeBaseActivity() {
                 p2: Boolean
             ) {
                 Log.i(TAG, "onInitializationSuccess")
-                if(ratingBar.rating > 7){
+                if(ratingBar.rating > 5){
                     player?.loadVideo(youtubeKey);
                 }else{
                     player?.cueVideo(youtubeKey);
