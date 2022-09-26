@@ -1,8 +1,10 @@
 package com.example.flixster
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.core.app.ActivityOptionsCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codepath.asynchttpclient.AsyncHttpClient
@@ -10,14 +12,16 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
 import okhttp3.Headers
 import org.json.JSONException
 
-private const val TAG = "MainActivity"
-private const val NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=51efe4ffc6ff6ce07a1fd331e7d2c148"
 
+private const val TAG = "MainActivity"
+//private const val NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=51efe4ffc6ff6ce07a1fd331e7d2c148"
+private const val NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"
 
 class MainActivity : AppCompatActivity() {
 
     private val movies = mutableListOf<Movie>()
     private lateinit var rvMovies: RecyclerView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
