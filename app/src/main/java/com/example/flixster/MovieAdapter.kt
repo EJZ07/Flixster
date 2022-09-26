@@ -9,11 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.content.ContextCompat.startActivity
+import androidx.core.app.ActivityOptionsCompat.makeSceneTransitionAnimation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlinx.parcelize.Parcelize
+import com.bumptech.glide.annotation.GlideModule
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.load.resource.bitmap.TransformationUtils.centerCrop
+import com.bumptech.glide.request.target.Target
+import com.bumptech.glide.request.target.Target.SIZE_ORIGINAL
 
 
 const val MOVIE_EXTRA = "MOVIE_EXTRA"
@@ -39,7 +44,6 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
 
     override fun getItemCount() = movies.size
 
-
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         private val ivPoster = itemView.findViewById<ImageView>(R.id.ivPoster)
         private val ivBackdrop = itemView.findViewById<ImageView>(R.id.ivBackdrop)
@@ -62,28 +66,34 @@ class MovieAdapter(private val context: Context, private val movies: List<Movie>
             if (orientation == Configuration.ORIENTATION_PORTRAIT) {
                 Glide.with(context)
                     .load(movie.posterImageUrl)
+                    .override(100, Target.SIZE_ORIGINAL)
+                    .transform(RoundedCorners(30))
                     .placeholder(R.drawable.disk)
-                    .error(R.drawable.none)
                     .into(ivPoster)
             } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 Glide.with(context)
-                    .load(movie.backDropImageUrl)
+                    .load(movie.posterImageUrl)
+                    .override(500, Target.SIZE_ORIGINAL)
+                    .transform(RoundedCorners(30))
                     .placeholder(R.drawable.disk)
-                    .error(R.drawable.none)
                     .into(ivBackdrop)
             }
 
 
         }
 
-        override fun onClick(p0: View?) {
+        override fun onClick(v: View?) {
             //Get notified of movie being tapped on
             val movie = movies[adapterPosition]
 //            Toast.makeText(context, movie.title, Toast.LENGTH_SHORT).show ()
             //2. Use the intent system to navigate to the new activity
             val intent = Intent(context, DetailActivity::class.java)
-            val putExtra = intent.putExtra("MOVIE_EXTRA", movie)
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this@MovieAdapter, (tvOverview as View), "Profile")
+
+//            val options = makeSceneTransitionAnimation(
+//                context,
+//                (tvTitle as View?)!!, "profile"
+//            )
+            intent.putExtra("MOVIE_EXTRA", movie)
 
             context.startActivity(intent)
 
